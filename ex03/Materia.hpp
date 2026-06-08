@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "Character.hpp"
 
 class AMateria
 {
@@ -20,14 +21,20 @@ public:
 class	Ice : public AMateria
 {
 public:
-	AMateria* clone() const;
+	Ice();
+	~Ice();
+	Ice &operator=(Ice const &other);
+	Ice* clone() const;
 	void	use(ICharacter& target);
 };
 
 class	Cure : public AMateria
 {
 public:
-	AMateria* clone() const;
+	Cure();
+	~Cure();
+	Cure &operator=(Cure const &other);
+	Cure* clone() const;
 	void	use(ICharacter& target);
 };
 
