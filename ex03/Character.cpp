@@ -104,5 +104,5 @@ void	Character::use(int idx, ICharacter& target)
 	mat[idx] = NULL;
 }
 
-static int	total_floor = 0;
-static t_node	*floor = NULL;
+int	Character::total_floor = 0;
+t_node	*Character::floor = NULL;

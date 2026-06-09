@@ -1,21 +1,35 @@
 #include "MateriaSource.hpp"
 
+IMateriaSource::IMateriaSource(void)
+{
+}
+
+IMateriaSource::IMateriaSource(IMateriaSource const &other)
+{
+}
+
+IMateriaSource	&IMateriaSource::operator=(IMateriaSource const &other)
+{
+	return (*this);
+}
+
+IMateriaSource::~IMateriaSource()
+{
+}
+
 MateriaSource::MateriaSource(void)
 {
+	std::memset(this->mat, 0, sizeof(AMateria *) * 4);
 } 
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
-	int	index;
-
 	std::memset(this->mat, 0, sizeof(AMateria *) * 4);
-	index = 0;
 	for (int i = 0; i < 4; i++)
 	{
 		if (other.mat[i] != NULL)
 		{
-			this->mat[index] = other.mat[i].clone();
-			index++;
+			this->mat[i] = other.mat[i]->clone();
 		}
 	}
 }
@@ -24,27 +38,37 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &other)
 {
 	if (this != &other)
 	{
-		MateriaSource	copy(other);
-
-		this->mat = copy.mat; 
+		std::memset(this->mat, 0, sizeof(AMateria *) * 4);
+		for (int i = 0; i < 4; i++)
+		{
+			if (other.mat[i] != NULL)
+			{
+				this->mat[i] = other.mat[i]->clone();
+			}
+		}
 	}
 	return (*this);
 }
 
 MateriaSource::~MateriaSource()
 {
-	//peut etre qu'il faut gerer la memoire ici
+	for (int i = 0; i < 4; i++)
+	{
+		if (mat[i] != NULL)
+		{
+			delete mat[i];
+			mat[i] == NULL;
+		}
+	}
 }
 
 void	MateriaSource::learnMateria(AMateria *other)
 {
-	int	index;
-
 	for (int i = 0; i < 4; i++)
 	{
-		if (other[i] != NULL)
+		if (this->mat[i] == NULL)
 		{
-			this->mat[index] = other.clone();
+			this->mat[i] = other->clone();
 			return ;
 		}
 	}
@@ -56,11 +80,17 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->mat[i] != NULL && this->mat[i].getType() == type)
+		if (this->mat[i] != NULL && this->mat[i]->getType() == type)
 		{
-			return (new AMateria(type));
+			AMateria	*copy;
+			
+			if (type == "ice")
+				copy = new Ice();
+			else if (type == "cure")	
+				copy = new Cure(); 
+			return (copy);
 		}
 	}
-	std::cout << "This objet is unknown" << std::endl;
+	std::cout << "This object is unknown" << std::endl;
 	return (NULL);
 }

@@ -21,11 +21,10 @@ std::string const	&AMateria::getType() const
 	return (type);
 }
 
-/*void	AMateria::use(ICharacter& target)	
+void	AMateria::use(ICharacter& target)	
 {
 	std::cout << "A default action has been taken" << std::endl;
 }
-*/
 
 Ice::Ice(void) : AMateria("ice")
 {
@@ -45,12 +44,10 @@ Ice::~Ice(void)
 	AMateria::~AMateria();
 }
 
-/*
 void	Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
-*/
 
 Ice*	Ice::clone() const
 {
@@ -60,7 +57,7 @@ Ice*	Ice::clone() const
 	return (clone);
 };
 
-Cure::Cure(void) : AMateria("ice")
+Cure::Cure(void) : AMateria("cure")
 {
 }
 
@@ -78,12 +75,10 @@ Cure::~Cure(void)
 	AMateria::~AMateria();
 }
 
-/*
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals  " << target.getName() << "'s wounds  *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds  *" << std::endl;
 }
-*/
 
 Cure*	Cure::clone() const
 {
