@@ -49,6 +49,17 @@ Character::~Character(void)
 		if (this->mat[i] != NULL)
 			delete mat[i];
 	}
+	t_node	*curr;
+	t_node	*next;
+	curr = floor;
+	while (curr != NULL)
+	{
+		next = curr->next;
+		delete curr->content;
+		delete curr;
+		curr = next;
+	}
+	floor = NULL;
 }
 
 std::string const	&Character::getName() const
@@ -73,7 +84,7 @@ void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || mat == NULL || mat[idx] == NULL)
 	{
-		std::cout << "Invalid Index" << std::endl;
+		//std::cout << "Invalid Index" << std::endl;
 		return ;
 	}
 	t_node *newNode = new t_node;
@@ -96,7 +107,7 @@ void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= 4 || mat == NULL || this->mat[idx] == NULL)
 	{
-		std::cout << "Invalid Index" << std::endl;
+		//std::cout << "Invalid Index" << std::endl;
 		return ;
 	}
 	mat[idx]->use(target);
