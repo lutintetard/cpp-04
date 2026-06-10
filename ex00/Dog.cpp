@@ -6,7 +6,7 @@ Dog::Dog(void)
 	std::cout << "An instance of the class Dog has been created" << std::endl;
 }
 
-Dog::Dog(Dog const &other)
+Dog::Dog(Dog const &other) : Animal()
 {
 	this->type = other.type;	
 }
@@ -21,7 +21,7 @@ Dog &Dog::operator=(Dog const &other)
 
 Dog::~Dog(void)
 {
-	std::cout << "An instance of the class dog has been deleted" << std::endl;	
+	std::cout << "An instance of the class Dog has been deleted" << std::endl;	
 }
 
 void	Dog::makeSound(void) const
