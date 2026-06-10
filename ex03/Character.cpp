@@ -82,7 +82,7 @@ void	Character::equip(AMateria *m)
 
 void	Character::unequip(int idx)
 {
-	if (idx < 0 || idx >= 4 || mat == NULL || mat[idx] == NULL)
+	if (idx < 0 || idx >= 4 || mat[idx] == NULL)
 	{
 		//std::cout << "Invalid Index" << std::endl;
 		return ;
@@ -105,7 +105,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx >= 4 || mat == NULL || this->mat[idx] == NULL)
+	if (idx < 0 || idx >= 4 || this->mat[idx] == NULL)
 	{
 		//std::cout << "Invalid Index" << std::endl;
 		return ;

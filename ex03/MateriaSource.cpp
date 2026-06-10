@@ -45,7 +45,7 @@ MateriaSource::~MateriaSource()
 		if (mat[i] != NULL)
 		{
 			delete mat[i];
-			mat[i] == NULL;
+			mat[i] = NULL;
 		}
 	}
 }

@@ -23,7 +23,7 @@ std::string const	&AMateria::getType() const
 
 void	AMateria::use(ICharacter& target)	
 {
-	std::cout << "A default action has been taken" << std::endl;
+	std::cout << "A default action has been taken against " << target.getName() << std::endl;
 }
 
 Ice::Ice(void) : AMateria("ice")
