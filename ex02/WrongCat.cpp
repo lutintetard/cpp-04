@@ -6,7 +6,7 @@ WrongCat::WrongCat(void)
 	std::cout << "An instance of the class WrongCat has been created" << std::endl;
 }
 
-WrongCat::WrongCat(WrongCat const &other)
+WrongCat::WrongCat(WrongCat const &other) : WrongAnimal()
 {
 	this->type = other.type;	
 }

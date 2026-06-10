@@ -6,9 +6,9 @@ Dog::Dog(void) : brain(new Brain)
 	std::cout << "An instance of the class Dog has been created" << std::endl;
 }
 
-Dog::Dog(Dog const &other)
+Dog::Dog(Dog const &other) : AAnimal()
 {
-	this->brain = new Brain();
+	this->brain = new Brain(*other.brain);
 	this->type = other.type;
 }
 
@@ -18,17 +18,22 @@ Dog &Dog::operator=(Dog const &other)
 		return (*this);
 	this->type = other.type;
 	delete this->brain;
-	this->brain = new Brain();
+	this->brain = new Brain(*other.brain);
 	return (*this);
 }
 
 Dog::~Dog(void)
 {
 	delete this->brain;
-	std::cout << "An instance of the class dog has been deleted" << std::endl;	
+	std::cout << "An instance of the class Dog has been deleted" << std::endl;	
 }
 
 void	Dog::makeSound(void) const
 {
 	std::cout << "This dog barks" << std::endl;
+}
+
+Brain	*Dog::getBrain(void) const
+{
+	return (brain);
 }
