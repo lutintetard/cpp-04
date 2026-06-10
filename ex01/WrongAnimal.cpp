@@ -25,7 +25,7 @@ WrongAnimal::~WrongAnimal(void)
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "This WrongAnimal makes an undefined noise" << std::endl;
+	std::cout << "This WrongAnimal makes a wierd noise" << std::endl;
 }
 
 std::string const &WrongAnimal::getType(void) const
